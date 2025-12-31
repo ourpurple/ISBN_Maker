@@ -41,7 +41,6 @@ htmlcov/
 .nox/
 
 # Build artifacts
-*.spec
 *.exe
 *.dll
 *.pyd

@@ -26,6 +26,8 @@ jobs:
       
       - name: Build exe
         run: python build.py
+        env:
+          PYTHONIOENCODING: utf-8
       
       - name: Upload Release Asset
         uses: softprops/action-gh-release@v1

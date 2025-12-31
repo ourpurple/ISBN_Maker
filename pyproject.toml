@@ -1,0 +1,61 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "isbn-barcode-generator"
+version = "1.0.0"
+description = "批量ISBN条码生成器 - 生成符合GS1标准的TIF格式条码图片"
+readme = "README.md"
+requires-python = ">=3.11"
+license = {text = "MIT"}
+authors = [
+    {name = "ISBN Barcode Generator Team"}
+]
+keywords = ["isbn", "barcode", "ean-13", "tif", "publishing"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: End Users/Desktop",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: Microsoft :: Windows",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Multimedia :: Graphics",
+]
+
+dependencies = [
+    "PyQt6>=6.5.0",
+    "Pillow>=10.0.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0.0",
+    "hypothesis>=6.0.0",
+    "pytest-cov>=4.0.0",
+]
+
+[project.scripts]
+isbn-barcode-generator = "isbn_barcode_generator.main:main"
+
+[project.gui-scripts]
+isbn-barcode-generator-gui = "isbn_barcode_generator.main:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+python_functions = ["test_*"]
+addopts = "-v --tb=short"
+
+[tool.coverage.run]
+source = ["src/isbn_barcode_generator"]
+branch = true
+
+[tool.coverage.report]
+exclude_lines = [
+    "pragma: no cover",
+    "if __name__ == .__main__.:",
+]
